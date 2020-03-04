@@ -1,12 +1,11 @@
 package test
 
 import (
-	"testing"
-	"github.com/auroraLZDF/srt/utils"
 	"fmt"
 	"github.com/auroraLZDF/goconf"
+	"github.com/auroraLZDF/gof/utils"
+	"testing"
 )
-
 
 //var Conf *goconf.Config
 
@@ -14,7 +13,7 @@ func init() {
 	Conf = goconf.InitConfig("./config/config.ini")
 }
 
-func TestConf( t *testing.T)  {
+func TestConf(t *testing.T) {
 	var currentPath = utils.GetCurrentDirectory()
 	fmt.Println("current: " + currentPath)
 
@@ -24,7 +23,7 @@ func TestConf( t *testing.T)  {
 		return
 	}
 	Conf := goconf.InitConfig(path)
-	Conf.DeleteValue("database", "username")	//username 是你删除的 key
+	Conf.DeleteValue("database", "username") //username 是你删除的 key
 
 	username := Conf.GetValue("database", "username")
 	if len(username) == 0 {

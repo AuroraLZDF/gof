@@ -5,7 +5,7 @@ import (
 	"time"
 	"log"
 	"github.com/jinzhu/gorm"
-	"github.com/auroraLZDF/srt/utils"
+	"github.com/auroraLZDF/gof/utils"
 	"github.com/auroraLZDF/goconf"
 )
 
@@ -43,7 +43,7 @@ func init() {
 }
 
 func (Member) TableName() string {
-	return "molbase_member"
+	return "_member"
 }
 
 func TestMysql( t *testing.T)  {

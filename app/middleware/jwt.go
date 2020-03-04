@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"github.com/auroraLZDF/srt/utils"
+	"github.com/auroraLZDF/gof/utils"
 )
 
 func JWT() gin.HandlerFunc {

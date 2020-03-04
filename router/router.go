@@ -10,7 +10,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"github.com/auroraLZDF/gof/app/controller/index"
+	"github.com/auroraLZDF/gof/app/controller/welcome"
 	"github.com/auroraLZDF/gof/app/middleware"
 )
 

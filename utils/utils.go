@@ -39,13 +39,13 @@ func IsExist(f string) bool {
 /**
  * 区分目录和文件
  */
-func IsFile(f string) bool {
+/*func IsFile(f string) bool {
 	fi, e := os.Stat(f)
 	if e != nil {
 		return false
 	}
 	return !fi.IsDir()
-}
+}*/
 
 /**
  * md5 加密
