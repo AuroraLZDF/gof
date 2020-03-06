@@ -1,3 +1,6 @@
 .idea
 .vscode
 vendor
+
+.env.json
+gin.log
