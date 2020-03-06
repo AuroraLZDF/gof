@@ -1,6 +1,10 @@
 package models
 
-import "log"
+import (
+	"fmt"
+	"github.com/auroraLZDF/gof/config"
+	"log"
+)
 
 type User struct {
 	Model
@@ -18,7 +22,7 @@ func (User) TableName() string {
 }
 
 func (u User) UserInfo(field string, value string) (user User, err error) {
-	err = DB.Where(field + "= ?", value).First(&user).Error
+	err = config.Db.Where(field + "= ?", value).First(&user).Error
 	if err != nil {
 		log.Println("userInfo: " + err.Error())
 	}
@@ -26,7 +30,8 @@ func (u User) UserInfo(field string, value string) (user User, err error) {
 }
 
 func (u User) UserList(params map[string]interface{}) (users []User, err error) {
-	err = DB.Where(params).Find(&users).Error	//db.Where(map[string]interface{}{"name": "jinzhu", "age": 20}).Find(&users)
+	log.Println("db:", config.Db, "params", params)
+	err = config.Db.Where(params).Find(&users).Error	//db.Where(map[string]interface{}{"name": "jinzhu", "age": 20}).Find(&users)
 	if err != nil {
 		log.Println("userList: " + err.Error())
 	}
@@ -34,7 +39,8 @@ func (u User) UserList(params map[string]interface{}) (users []User, err error) 
 }
 
 func (u User) UserCreate() (user User, err error) {
-	err = DB.Create(&u).Error
+	fmt.Println("user:", u)
+	err = config.Db.Create(&u).Error
 	if err != nil {
 		log.Println("userCreate: " + err.Error())
 	}

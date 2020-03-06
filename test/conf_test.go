@@ -10,19 +10,22 @@ import (
 //var Conf *goconf.Config
 
 func init() {
-	Conf = goconf.InitConfig("./config/config.ini")
+	//Conf = goconf.InitConfig("./config/config.ini")
 }
 
 func TestConf(t *testing.T) {
-	var currentPath = utils.GetCurrentDirectory()
+	var currentPath = utils.CurrentDirectory()
 	fmt.Println("current: " + currentPath)
 
-	var path = "./config/config.ini"
+	var path = "../config/config.ini"
 	if !utils.IsFile(path) {
 		fmt.Println("file not exists: " + path)
 		return
 	}
 	Conf := goconf.InitConfig(path)
+
+	fmt.Println(Conf)
+
 	Conf.DeleteValue("database", "username") //username 是你删除的 key
 
 	username := Conf.GetValue("database", "username")

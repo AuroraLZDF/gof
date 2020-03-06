@@ -1,31 +1,47 @@
 package utils
 
 import (
-	"strings"
-	"fmt"
-	"encoding/json"
-	"strconv"
-	"net/smtp"
-	"time"
-	"reflect"
-	"errors"
-	"path/filepath"
-	"os"
-	"log"
 	"crypto/md5"
 	"encoding/hex"
+	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/auroraLZDF/goconf"
+	"log"
+	"net/smtp"
+	"os"
+	"path"
+	"path/filepath"
+	"reflect"
+	"runtime"
+	"strconv"
+	"strings"
+	"time"
 )
 
 /**
  * 获取执行可执行文件的目录
  */
-func GetCurrentDirectory() string {
+func CurrentDirectory() string {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		log.Fatal(err)
 	}
 	return strings.Replace(dir, "\\", "/", -1)
+}
+
+/**
+ * 当前文件目录
+ */
+func CurrentPath() string {
+	_, file, _, ok := runtime.Caller(0)
+	if !ok {
+		panic("Can not get current file info")
+	}
+
+	curPath := path.Dir(file)
+
+	return curPath
 }
 
 /**
